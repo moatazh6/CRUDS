@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="header">
+          <h1 class="text-center mt-5 m-auto highlight">Bookmarker</h1>
+        </div>
+        <div class="card mx-2 mt-3">
+          <h5 class="card-header text-center">
+            <i class="fa-solid fa-bookmark py-2"></i>Bookmark your favorite
+            sites<i class="fa-solid fa-bookmark"></i>
+          </h5>
+          <div class="card-body">
+            <div>
+              <h5 class="card-title">
+                <i class="fa-solid fa-book pe-2"></i>Site Name
+              </h5>
+              <input
+                type="text"
+                id="input1"
+                placeholder="Bookmark Name"
+                class="w-100 ps-2 py-1 form-control"
+                oninput="validationName()"
+              />
+              <p class="alert alert-danger d-none mt-2" id="msgName">
+                Please enter your Site Name the first char is capital an then
+                between 2 to 15 any char small
+              </p>
+            </div>
+            <div>
+              <h5 class="card-title">
+                <i class="fa-solid fa-link pe-2"></i>Site URL
+              </h5>
+              <input
+                type="text"
+                id="input2"
+                placeholder="Bookmark Name"
+                class="w-100 ps-2 py-1 form-control"
+                oninput="validationUrl()"
+              />
+              <p class="alert alert-danger d-none mt-2" id="msgUrl">
+                Please enter your Site Name the first char is capital an then
+                between 2 to 15 any char small
+              </p>
+            </div>
+          </div>
+          <button
+            id="submitBtn"
+            class="btn btn-primary mt-2 m-auto mb-2"
+            onclick="addsites()"
+          >
+            Submit
+          </button>
+        </div>
+        <section id="tableSection" class="mt-4 py-4">
+          <div class="container">
+            <input
+              id="searchInput"
+              class="form-control w-100 mb-3"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              oninput="search()"
+            />
+            <div class="table-responsive">
+              <table class="table text-center">
+                <thead class="table- table-active">
+                  <tr>
+                    <th class="py-2">Index</th>
+                    <th class="py-2">Website Name</th>
+                    <th class="py-2">Visit</th>
+                    <th class="py-2">Delete</th>
+                  </tr>
+                </thead>
+                <tbody id="tableContent">
+                  <div class="row"></div>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
