@@ -91,7 +91,7 @@ function validationName() {
 function validationUrl() {
   var siteUrl = siteUrlInput.value;
   var regex =
-    /^(https?|ftp):\/\/([^\s$.?#].[^\s]*)\.(com|org|edu|net|info|gov|eg|)$/i;
+    /^(https?|ftp):\/\/([^\s$.?#].[^\s]*)(\.com|\.org|\.edu|\.net|\.info|\.gov|\.eg)$/i;
 
   var msgName = document.querySelector("#msgUrl");
 
