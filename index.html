@@ -30,7 +30,7 @@
                 id="input1"
                 placeholder="Bookmark Name"
                 class="w-100 ps-2 py-1 form-control"
-                oninput="validationName()"
+                oninput=" validationInputs(this, 'msgName')"
               />
               <p class="alert alert-danger d-none mt-2" id="msgName">
                 Please enter a valid name that starts with a capital letter and
@@ -46,7 +46,7 @@
                 id="input2"
                 placeholder="Bookmark Name"
                 class="w-100 ps-2 py-1 form-control"
-                oninput="validationUrl()"
+                oninput=" validationInputs(this, 'msgUrl')"
               />
               <p class="alert alert-danger d-none mt-2" id="msgUrl">
                 Please enter your Site url The first thing you must enter

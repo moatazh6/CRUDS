@@ -8,8 +8,13 @@ if (localStorage.getItem("sites") === null) {
 } else {
   siteList = JSON.parse(localStorage.getItem("sites"));
 }
+
+// Create Element
 function addsites() {
-  if (validationName() === true && validationUrl() === true) {
+  if (
+    validationInputs(siteNameInput, "msgName") === true &&
+    validationInputs(siteUrlInput, "msgUrl") === true
+  ) {
     var sites = {
       siteName: siteNameInput.value,
       siteUrl: siteUrlInput.value,
@@ -22,6 +27,7 @@ function addsites() {
   }
 }
 
+// Show Element
 function display() {
   cartona = "";
   for (var i = 0; i < siteList.length; i++) {
@@ -30,6 +36,7 @@ function display() {
   }
 }
 
+// Delete Element
 function deleteItem(index) {
   siteList.splice(index, 1);
   localStorage.setItem("sites", JSON.stringify(siteList));
@@ -37,6 +44,7 @@ function deleteItem(index) {
   document.getElementById("tableContent").innerHTML = cartona;
 }
 
+// Search
 function search() {
   var cartona = "";
   var term = searchInput.value;
@@ -48,6 +56,7 @@ function search() {
   }
 }
 
+// Element
 function createHtml(i) {
   var regex = new RegExp(searchInput.value, "gi");
 
@@ -70,43 +79,37 @@ function createHtml(i) {
   `;
 }
 
-function validationName() {
-  var siteName = siteNameInput.value;
-  var regex = /^[a-z]{2,15}$/i;
-  var msgName = document.querySelector("#msgName");
+// validationInputs
+function validationInputs(element, msgId) {
+  var text = element.value;
 
-  if (regex.test(siteName)) {
-    siteNameInput.classList.add("is-valid");
-    siteNameInput.classList.remove("is-invalid");
-    msgName.classList.add("d-none");
-    return true;
+  var regex = {
+    input1: /^[a-z]{2,15}$/i,
+    input2:
+      /^(https?|ftp):\/\/([^\s$.?#].[^\s]*)(\.com|\.org|\.edu|\.net|\.info|\.gov|\.eg)$/i,
+  };
+
+  var msg = document.getElementById(msgId);
+
+  if (regex[element.id]) {
+    if (regex[element.id].test(text)) {
+      element.classList.add("is-valid");
+      element.classList.remove("is-invalid");
+      msg.classList.add("d-none");
+      return true;
+    } else {
+      element.classList.add("is-invalid");
+      element.classList.remove("is-valid");
+      msg.classList.remove("d-none");
+      return false;
+    }
   } else {
-    siteNameInput.classList.add("is-invalid");
-    siteNameInput.classList.remove("is-valid");
-    msgName.classList.remove("d-none");
-    return false;
-  }
-}
-function validationUrl() {
-  var siteUrl = siteUrlInput.value;
-  var regex =
-    /^(https?|ftp):\/\/([^\s$.?#].[^\s]*)(\.com|\.org|\.edu|\.net|\.info|\.gov|\.eg)$/i;
-
-  var msgName = document.querySelector("#msgUrl");
-
-  if (regex.test(siteUrl)) {
-    siteUrlInput.classList.add("is-valid");
-    siteUrlInput.classList.remove("is-invalid");
-    msgName.classList.add("d-none");
-    return true;
-  } else {
-    siteUrlInput.classList.add("is-invalid");
-    siteUrlInput.classList.remove("is-valid");
-    msgName.classList.remove("d-none");
+    console.error("No regex pattern found for element ID:", element.id);
     return false;
   }
 }
 
+// clear
 function clear() {
   siteNameInput.value = null;
   siteUrlInput.value = null;
