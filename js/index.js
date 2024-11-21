@@ -54,26 +54,25 @@ function createHtml(i) {
   return `
       <tr>
       <td>${i + 1}</td>
-    <td>${siteList[i].siteName.replace(
-      regex,
-      (match) => `<span class="bg-danger">${match}</span>`
-    )}</td>
-    <td>
-      <a href="${
-        siteList[i].siteUrl
-      }" class="btn btn-outline-primary" target="_blank">Visit</a>
-    </td>
-    <td>
-      <button onclick= "deleteItem(${i})" class="btn btn-outline-danger" >Delete</button>
-    </td>
-  </tr>
-
-`;
+      <td>${siteList[i].siteName.replace(
+        regex,
+        (match) => `<span class="bg-danger">${match}</span>`
+      )}</td>
+      <td>
+        <a href="${
+          siteList[i].siteUrl
+        }" class="btn btn-outline-primary" target="_blank">Visit</a>
+      </td>
+      <td>
+        <button onclick="deleteItem(${i})" class="btn btn-outline-danger">Delete</button>
+           </td>
+      </tr>
+  `;
 }
 
 function validationName() {
   var siteName = siteNameInput.value;
-  var regex = /^[A-Z][a-z]{2,15}$/;
+  var regex = /^[a-z]{2,15}$/i;
   var msgName = document.querySelector("#msgName");
 
   if (regex.test(siteName)) {
