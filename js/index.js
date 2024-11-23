@@ -2,7 +2,7 @@ var siteNameInput = document.getElementById("input1");
 var siteUrlInput = document.getElementById("input2");
 var searchInput = document.getElementById("searchInput");
 
-var siteList = [];
+var siteList ;
 if (localStorage.getItem("sites") === null) {
   siteList = [];
 } else {
